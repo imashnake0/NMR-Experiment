@@ -1,17 +1,19 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
+import NMR_utils as nmr
 
 
-df = pd.read_csv('Raw_Data\B5_DopesWaterCuSO4_P1.CSV', skiprows=15, header=0)
-print(df)
-time = df['TIME']
-ch1 = df['CH1']
+def averageAcrossExperiments():  #
+    # Using a loop to read the data and compute the average
+    dfs = [nmr.readData(f'Raw_Data\\B1_90_S{i}.CSV') for i in range(1, 5)]
+    average = pd.concat([df['V'] for df in dfs], axis=1).mean(axis=1)
+    average_df = pd.DataFrame({'TIME': dfs[0]['TIME'], 'V': average})
+    # Extract the 'TIME' column from the first dataframe and combine it with the averaged 'V' values
+    return average_df
 
-plt.figure(figsize=(10, 6))
-plt.plot(time, ch1, label='CH1')
-plt.xlabel('Time')
-plt.ylabel('CH1')
-plt.title('CH1 vs Time')
-plt.grid(True)
-plt.legend()
+
+nmr.plotCSV("Raw_Data\\B1_90_S1.CSV", rollingAverageWindow=20,label="90deg pule")
+nmr.plotCSV("Raw_Data\\B1_180_S1.CSV", rollingAverageWindow=20,label="180deg pulse")
+nmr.plotCSV("Raw_Data\\B1_270_S1.CSV", rollingAverageWindow=20,label="270deg pulse",title='Free Induction Decay Curve of Water Doped with CuSO4')
 plt.show()
