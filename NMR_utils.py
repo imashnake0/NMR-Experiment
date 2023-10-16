@@ -14,11 +14,11 @@ def empty(input):
     return input
 
 
-def plotCSV(filename="", data=None, label="NMR", ylabel="Voltage", xlabel="Time (s)", title="NMR Decay Curve", dataOperator=empty):
+def plotCSV(filename="", data=None, label="NMR", ylabel="Voltage", xlabel="Time (s)", title="NMR Decay Curve", dataOperator=empty, xoffset=0, yoffset=0):
     if filename != "":
         data = readData(filename).dropna()
     data = dataOperator(data)
-    plt.plot(data['TIME'], data["V"], label=label)
+    plt.plot(data['TIME'] + xoffset, data["V"] + yoffset, label=label)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.title(title)
