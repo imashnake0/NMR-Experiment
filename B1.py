@@ -13,7 +13,7 @@ def averageAcrossExperiments():  #
     return average_df
 
 
-nmr.plotCSV("Raw_Data\\B1_90_S1.CSV", rollingAverageWindow=20,label="90deg pule")
-nmr.plotCSV("Raw_Data\\B1_180_S1.CSV", rollingAverageWindow=20,label="180deg pulse")
-nmr.plotCSV("Raw_Data\\B1_270_S1.CSV", rollingAverageWindow=20,label="270deg pulse",title='Free Induction Decay Curve of Water Doped with CuSO4')
+nmr.plotCSV("Raw_Data\\B1_90_S1.CSV",label="90deg pule", dataOperator=nmr.rollingAverage)
+nmr.plotCSV("Raw_Data\\B1_180_S1.CSV",label="180deg pulse", dataOperator=nmr.rollingAverage)
+nmr.plotCSV("Raw_Data\\B1_270_S1.CSV",label="270deg pulse",title='Free Induction Decay Curve of Water Doped with CuSO4', dataOperator=nmr.rollingAverage)
 plt.show()
