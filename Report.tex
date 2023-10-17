@@ -96,6 +96,11 @@ Hello World!
 \newpage
 
 \section{Experimental Design and Procedure}\label{sec:experimental-design-and-procedure}
+
+\newpage
+
+\section{Analysis}\label{sec:analysis}
+
 \subsection{Finding Resonance}\label{subsec:finding-resonance}
 
 \begin{figure}[h]
@@ -139,7 +144,7 @@ Hello World!
         \sphere{(0, -1, 0)}{below}
     \end{center}
     \item That is, $\vec{M}$ returns to the x-y plane but is anti-parallel to $\vec{M}$ in the 90\degree pulse case:
-    \[ \vec{M}_{180^\circ} = -\vec{M}_{90^\circ} \]
+    \[ \vec{M}_{270^\circ} = -\vec{M}_{90^\circ} \]
     \item It hence precesses in the opposite sense of rotation as the 90\degree case\footnote{And vice versa.}.
     \item According to Faraday's law, the direction of the current $\vec{M}_{180^\circ}$ induces in the coil is opposite to that of $\vec{M}_{90^\circ}$.
     \item This is why we see a current that is -$I_{90^\circ}$ induced in the 270\degree case in Figure~\ref{fig:B1_FID}.
@@ -153,10 +158,70 @@ Hello World!
     \item They spread out in the x-y plane causing the magnetization vector and hence the induced current to vanish as a whole.
 \end{itemize}
 
-\newpage
+\subsection{The Free Induction Decay and $T_2$}\label{subsec:the-free-induction-decay-and-$t_2$}
+\begin{itemize}
+    \item In this section, we take a closer look at the FID observed in the 90\degree and 270\degree traces of Figure~\ref{fig:B1_FID} (for different samples).
+    \item For the same 90\degree pulse, we have the following FID traces:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale = 0.78]{./images/B2}
+        \caption{FID for the 90$^{\circ}$ pulse in water doped with CuSO$_4$, ethanol, and rubber}
+        \label{fig:B2_FID}
+    \end{figure}
+\end{itemize}
 
-\section{Analysis}\label{sec:analysis}
-% Your analysis content goes here.
+\subsubsection{Finding $T_2$}
+\textbf{Analytically}
+\begin{itemize}
+    \item On plotting the traces in Figure~\ref{fig:B2_FID} on a semi-log graph (along with the best fit lines), we get:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale = 0.78]{./images/B2_log_best_fit}
+        \caption{$\ln(M_{xy}) = -\frac{t}{T_2^*} + \ln(M_0)$ plotted for the three traces in Figure~\ref{fig:B2_FID}}
+        \label{fig:B2_FID_log_best_fit}
+    \end{figure}
+
+    \item We can find $T_2^*$ using the following equation:
+    \[ M_{xy}(t) = M_0 e^{-\frac{t}{T_2^*}} \]
+    Here, $M_{xy}(t)$ is the trace seen in Figure~\ref{fig:B2_FID},\\
+    $M_0$ is the magnetization at $t=0$,\\
+    $t$ is the time.
+    \item We can take the $\ln$ of both sides to get:
+    \[ \ln(M_{xy}) = \ln(M_0) + \ln\left(e^{-\frac{t}{T_2^*}}\right) \]
+    \[ \ln(M_{xy}) = -\frac{t}{T_2^*} + \ln(M_0) \]
+    \item Comparing this to $y = mx + c$, we see that the slope, $m$, is given by:
+    \[ m = -\frac{1}{T_2^*} \]
+    \[ \implies T_2^* = -\frac{1}{m} \]
+\end{itemize}
+\textbf{Sample Calculation}
+\begin{itemize}
+    \item Consider $m = -328.236$s$^{-1}$ for Doped Water in Table~\ref{tab:B2_FID_log_best_fit_table}:
+    \[ T_2^* = -\frac{1}{-328.236\text{s}^{-1}} \]
+    \[ T_2^* = -\frac{1}{-328.236}\]
+    \[ T_2^* = 0.003047\text{s} \]
+    \item We can hence find $T_2^*$ from the slopes of the best fit lines in Figure~\ref{fig:B2_FID_log_best_fit} for the other samples:
+    \begin{table}[h]
+        \centering
+        \includegraphics[scale = 0.78]{./images/B2_T2-crop}
+        \caption{Slopes of best fit lines and calculated $T_2^*$}
+        \label{tab:B2_FID_log_best_fit_table}
+    \end{table}
+\end{itemize}
+\textbf{Estimation}
+\begin{itemize}
+    \item We can find an estimation for $T_2^*$ directly from the FID traces.
+    \item For $t = T_2^*$, we have:
+    \[ M_{xy}(T_2^*) = M_0 e^{-1} \]
+    \[ \frac{M_{xy}(T_2^*)}{M_0} \approx 0.37 \]
+    \[ M_{xy}(T_2^*) \approx 0.37 M_0 \]
+    \item We can estimate the time at which $M_{xy}(T_2^*)$ is approximately $0.37 \cdot M_0$:
+    \begin{table}[h]
+        \centering
+        \includegraphics[scale = 0.78]{./images/B2_slopes_estimate-crop}
+        \caption{Estimate of $T_2^*$ using the initial magnetization}
+        \label{tab:B2_FID_log_best_fit_table_estimate}
+    \end{table}
+\end{itemize}
 
 \newpage
 
