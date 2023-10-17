@@ -13,9 +13,9 @@ def averageAcrossExperiments():  #
 
 yoffset = 0.68
 
-nmr.plotCSV("Raw_Data/B1_90_S1.CSV", label="90° pulse", dataOperator=nmr.rollingAverage, yoffset=yoffset)
-nmr.plotCSV("Raw_Data/B1_180_S1.CSV", label="180° pulse", dataOperator=nmr.rollingAverage, yoffset=yoffset)
-nmr.plotCSV("Raw_Data/B1_270_S1.CSV", label="270° pulse", dataOperator=nmr.rollingAverage, yoffset=yoffset,
+nmr.plotCSV("../Raw_Data/B1_90_S1.CSV", label="90° pulse", dataOperator=nmr.rollingAverage, yoffset=yoffset)
+nmr.plotCSV("../Raw_Data/B1_180_S1.CSV", label="180° pulse", dataOperator=nmr.rollingAverage, yoffset=yoffset)
+nmr.plotCSV("../Raw_Data/B1_270_S1.CSV", label="270° pulse", dataOperator=nmr.rollingAverage, yoffset=yoffset,
             title='Free Induction Decay Curve of Water Doped with CuSO₄')
 plt.savefig("images/B1.pdf", format="pdf", bbox_inches="tight")
 plt.show()
