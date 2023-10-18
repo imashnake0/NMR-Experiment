@@ -17,12 +17,12 @@ for i in range(1,6):
     nmr.plotCSV(f"../Raw_Data/B5_Ethanol_P{i}.CSV",
             title='Trace for Ethanol', label=f"Curve {i}"
                 )
-plt.savefig("../images/B5_water.pdf", format="pdf", bbox_inches="tight")
+plt.savefig("../images/B5_ethanol.pdf", format="pdf", bbox_inches="tight")
 plt.show()
 
 for i in range(1,6):
     nmr.plotCSV(f"../Raw_Data/B5_Rubber_P{i}.CSV",
             title='Trace for Rubber', label=f"Curve {i}"
                 )
-plt.savefig("../images/B5_water.pdf", format="pdf", bbox_inches="tight")
+plt.savefig("../images/B5_Rubber.pdf", format="pdf", bbox_inches="tight")
 plt.show()
