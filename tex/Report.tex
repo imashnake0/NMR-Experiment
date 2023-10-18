@@ -93,9 +93,129 @@ Hello World!
 \section{Theoretical Background}\label{sec:theoretical-background}
 % Your theoretical background content goes here.
 
+\subsection{Spin in a Magnetic Field}\label{subsec:spin-in-magnetic-field}
+
+\begin{itemize}
+    \item Nuclei with spin inherently exhibit a magnetic dipole moment, denoted as \( \vec{\mu} \). In classical terms, one can liken this to a minuscule bar magnet.
+
+    \item Upon positioning such a magnet within an external magnetic field, characterized as \( \vec{B_0} = B_0 \hat{z} \), and presuming the spin axis (aligned with \( \vec{\mu} \)) is misaligned with \( \vec{B_0} \), it undergoes a torque, mathematically expressed as \( \vec{\tau} = \vec{\mu} \times \vec{B_0} \), and commences a precession around the magnetic field.
+
+    \item The Larmor relation governs the frequency of this precession: \( f_0 = \frac{\omega_0}{2\pi} = \frac{\gamma B_0}{2\pi} \), where \( \gamma \) stands for the gyromagnetic ratio—a metric that ties the magnetic moment to the angular momentum. Significantly, this ratio is nucleus-specific. For instance, in the context of protons (or \( ^1H \) nuclei predominantly utilized in MRI), a 1 Tesla magnetic field corresponds to \( f_0 = 42.57 \, MHz \).
+
+    \item Quantum mechanics introduces another layer of nuance. It posits that nuclear spin is quantized. Each specific nucleus possesses an intrinsic, fixed spin. Such quantization results in the dipole moment \( \vec{\mu} \) precessing, in the face of a uniform external magnetic field \( \vec{B_0} \), only at sharply defined angles relative to \( \vec{B_0} \).
+
+    \item With respect to protons, \( \vec{\mu} \) adopts merely two orientations concerning \( \vec{B_0} \): either parallel (denoted as spin "up") or antiparallel (or spin "down") to \( \vec{B_0} \). These orientations carry distinct energy levels in the \( \vec{B_0} \) field. Such energy differentiation results in an imbalance, with "up" spins slightly outweighing the "down" spins, leading to a discernible macroscopic magnetization \( \vec{M} \) along \( \vec{B_0} \).
+
+    \item An auxiliary magnetic field \( \vec{B_1} \), when tuned to the Larmor frequency \( f_0 \), can modulate the spin energy level populations, which tilts \( \vec{M} \) away from the z-direction, inducing a precession around \( \vec{B_0} \) at frequency \( f_0 \). For convenience, this behavior of \( \vec{M} \) is often assessed classically. The torque experienced by the magnetization due to the rotation of \( \vec{B_1} \) is given by \( \vec{\tau} = \vec{M} \times \vec{B_1} \).
+
+    \item It's pivotal to understand motion in the “rotating frame”, a reference frame oscillating at the Larmor frequency around \( \vec{B_0} \) (or the z-axis). In this context, \( \vec{B_0} \) remains stationary in both the laboratory and rotating frames, implying the z'-axis in the rotating frame mirrors the z-axis in the lab frame. Consequently, the stationary \( \vec{B_1} \) in the rotating frame instigates \( \vec{M} \) to revolve about \( \vec{B_1} \), remaining within the z'y'-plane.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.2]{../images/diagram1}
+    \caption{Diagram of proton spin precessing. Source: Experiment 20 Manual (originally from Medical Imaging: Signals and Systems, Pearson Prentice Hall)}
+    \label{fig:diagram1}
+    \end{figure}
+\item \end{itemize}
+
+\subsection{Measuring the Spin}\label{subsec:measuring-spin}
+\begin{itemize}
+    \item The magnetization vector \(\vec{M}\) can be manipulated using various radio-frequency (rf) pulse schemes.
+    \begin{itemize}
+        \item Applying a rf pulse of amplitude \(B_1\) and duration \(\tau_P\) such that \(\vec{M}\) is rotated into the xy-plane results in a \(\pi/2\) pulse.
+        \item Doubling \(\tau_P\) produces a \(\pi\) pulse, rotating \(\vec{M}\) into the negative z-direction.
+    \end{itemize}
+
+    \item The characteristic time for the magnetization in the xy-plane, \(M_{xy}\), to decay is denoted \(T_2\), known as the spin-spin relaxation time.
+    \begin{itemize}
+        \item Over time, spins release the energy they obtained through the application of the \(\pi/2\) pulse and return to equilibrium.
+        \item When the magnetization regrows along the z-axis to equilibrium value \(B_0\), it's characterized by time \(T_1\), called the spin-lattice relaxation time.
+    \end{itemize}
+
+    \item As \(\vec{M}\) precesses around \(\vec{B_0}\), any xy-plane component induces an emf in a surrounding sample coil.
+    \begin{itemize}
+        \item This is described by Faraday’s Law: \(\text{emf} = -N \frac{d\phi_B}{dt}\) due to \(\vec{M}\).
+        \item The recorded signal from this precessing magnetization is termed the free induction decay (FID).
+    \end{itemize}
+
+    \item In a standard sample, individual magnetic moments contributing to \(\vec{M}\) are in varied magnetic environments.
+    \begin{itemize}
+        \item This is due to local, internal magnetic fields from neighboring spins and inhomogeneities in the \(B_0\) field.
+        \item After magnetization is directed into the xy-plane, spins begin to dephase, reducing the net \(M\) vector in the xy-plane and consequently the induced signal.
+    \end{itemize}
+
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.2]{../images/diagram2}
+    \caption{Diagram after an RF pulse is applied. Source: Experiment 20 Manual (originally from Medical Imaging: Signals and Systems, Pearson Prentice Hall)}
+    \label{fig:diagram2}
+    \end{figure}
+
+    \item Once \(\vec{M}\) has a component in the xy-plane, individual spins constituting this component start precessing at different rates. This causes spins to dephase, leading to a reduction in the overall magnitude of the xy-component of the magnetization vector \(\vec{M}\).
+\end{itemize}
+
 \newpage
 
 \section{Experimental Design and Procedure}\label{sec:experimental-design-and-procedure}
+
+\subsection*{Apparatus Overview}
+
+\begin{itemize}
+    \item Using a Self-sustained pulse Nuclear Magnetic Resonance (NMR) spectrometer.
+    \item Analyzing samples of water enriched with copper sulfate, a vinyl eraser, and ethanol.
+    \item Components of the Spectrometer:
+    \begin{itemize}
+        \item Pulse programming unit
+        \item Source of frequency
+        \item RF pulse modulation system
+        \item Transmission unit
+        \item NMR probing mechanism
+        \item NMR signal detection and reception system
+        \item Permanent magnet
+    \end{itemize}
+    \item Functionality: Subject samples (in sealed glass tubes) to RF magnetic pulses; integration with an oscilloscope for real-time observation and recording.
+    \item Integrated Experimental Procedures: Free induction decay (T2), inversion recovery, spin-echo.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.4]{../images/diagram3}
+    \caption{Photo of the NMR machine used. Source: Experiment 20 Manual}
+    \label{fig:diagram3}
+    \end{figure}
+\end{itemize}
+
+\subsection*{Procedure Overview}
+
+\begin{itemize}
+\item \textbf{B.1: Finding Resonance}
+  \begin{itemize}
+  \item Place water sample in magnet, set spectrometer settings, and adjust for a 90° pulse to achieve resonance.
+  \end{itemize}
+
+\item \textbf{B.2: The FID and \( T2^* \)}
+  \begin{itemize}
+  \item Using water, alcohol, and rubber samples, adjust spectrometer settings, acquire an exponential FID, and determine \( T2^* \) for each sample.
+  \end{itemize}
+
+\item \textbf{B.3: Measurement of \( T1 \)}
+  \begin{itemize}
+  \item Using water, alcohol, and rubber samples, adjust spectrometer for two 90° pulses, determine \( \tau \) for \( M_z(\tau) = M_0/2 \), and compare \( T1 \) values for each sample.
+  \end{itemize}
+
+\item \textbf{B.4: Measurement of \( T1 \) with Inversion-Recovery Sequence}
+  \begin{itemize}
+  \item Using water, alcohol, and rubber samples, adjust spectrometer for 180° and 90° pulses, record FID for varying \( \tau \), and determine \( T1 \) using linear slope and zero-crossing methods.
+  \end{itemize}
+
+\item \textbf{B.5: Hahn Echo}
+  \begin{itemize}
+  \item Using water, alcohol, and rubber samples, adjust spectrometer for 90° and 180° pulses, observe the echo signal, and determine \( T2 \) for each sample.
+  \end{itemize}
+
+\item \textbf{B.6: Freezing}
+  \begin{itemize}
+  \item Place water sample in magnet, adjust spectrometer settings, achieve an exponential FID, then freeze the sample in liquid nitrogen and observe changes in the signal.
+  \end{itemize}
+\end{itemize}
+
 
 \newpage
 
