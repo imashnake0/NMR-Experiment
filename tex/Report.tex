@@ -10,6 +10,7 @@
 \usepackage{pgfplots}
 \usepackage{tikz-3dplot}
 \usepackage{tikz}
+\usepackage{textcomp}
 
 \tdplotsetmaincoords{60}{115}
 \pgfplotsset{compat=newest}
@@ -343,7 +344,65 @@ Hello World!
     \end{table}
 \end{itemize}
 
-\subsection{Measurement of $T_1$}
+\subsection{Measurement of $T_1$}\label{subsec:measurement-of-$t_1$}
+
+\begin{itemize}
+    \item In this section, we perform an Inversion Recovery (IR) experiment to find the spin-lattice relaxation time, $T_1$.
+    \item We use two 90\degree pulses $t = \tau$ apart:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale = 0.57]{../images/B3_Doped_Water}
+        \caption{IR trace for water doped in CuSO$_4$}
+        \label{fig:B3_Doped_Water}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale = 0.57]{../images/B3_Ethanol}
+        \caption{IR trace for Ethanol}
+        \label{fig:B3_Ethanol}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale = 0.57]{../images/B3_Rubber}
+        \caption{IR trace for Rubber}
+        \label{fig:B3_Rubber}
+    \end{figure}
+\end{itemize}
+
+\subsubsection{Calculating $T_1$}
+
+\begin{itemize}
+    \item To find $T_1$, we use the following equation:
+    \[ M_z(\tau) = M_0 \left( 1 - e^{-\frac{\tau}{T_1}} \right) \]
+    \item Since we already chose to record the data such that $M_z(\tau) = \frac{M_0}{2}$:
+    \[ \frac{M_0}{2} = M_0 \left( 1 - e^{-\frac{\tau}{T_1}} \right) \]
+    \[ \frac{1}{2} = 1 - e^{-\frac{\tau}{T_1}} \]
+    \[ \ln \left( e^{-\frac{\tau}{T_1}} \right) = \ln \left( \frac{1}{2} \right) \]
+    \[ -\frac{\tau}{T_1} = -0.693 \]
+    \[ \frac{\tau}{T_1} = 0.693 \]
+    \[ T_1 = \frac{\tau}{0.693} \]
+    \item Where $\tau$ is the distance between peaks\footnote{This was done by finding where the peaks happen in the data.}:
+    \begin{itemize}
+        \item $\tau_{\text{doped H$_2$O}} = 0.006205\text{s} - 0.000030\text{s} = 0.006175\text{s}$
+        \item $\tau_{\text{ethanol}} = 0.898870\text{s} - 0.000248\text{s} = 0.898622\text{s}$
+        \item $\tau_{\text{rubber}} = 0.023670\text{s} - 0.000088\text{s} = 0.023582\text{s}$
+    \end{itemize}
+    \item And so $T_1 = \frac{\tau}{0.693}$ becomes:
+    \begin{table}[h]
+        \centering
+        \includegraphics[scale = 0.78]{../images/B3_T1-crop}
+        \caption{$T_1$ calculated from $\tau$}
+        \label{tab:T1_table}
+    \end{table}
+    % TODO: Need to use some other method find T1 somehow?
+\end{itemize}
+
+\subsection{Measurement of $T_1$ with Inversion-Recovery Sequence}\label{subsec:measurement-of-$t_1$-with-inversion-recovery-sequence}
+\begin{itemize}
+    \item
+\end{itemize}
 
 \newpage
 
