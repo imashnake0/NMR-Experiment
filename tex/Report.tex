@@ -401,7 +401,33 @@ Hello World!
 
 \subsection{Measurement of $T_1$ with Inversion-Recovery Sequence}\label{subsec:measurement-of-$t_1$-with-inversion-recovery-sequence}
 \begin{itemize}
-    \item
+    \item We repeat the process in Section~\ref{subsec:measurement-of-$t_1$}, but with a 180\degree first pulse.
+    \item The equation that describes the regrowth of $M_z$ component is given by:
+    \[ M_z(\tau) = M_0 \left( 1 - 2e^{-\frac{\tau}{T_1}} \right) \]
+    \[ \implies -\frac{\tau}{T_1} = \ln \left[ \frac{1}{2} \left( 1 - \frac{M_z}{M_0} \right) \right] \]
+    \item To be able to plot this, we need the different values of $\tau$, the values of $M_z$ at $\tau$.
+    \item The plots we have for the two pulses are:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale = 0.57]{../images/B4_Doped_Water}
+        \caption{IR trace for Doped Water}
+        \label{fig:B4_DW}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale = 0.57]{../images/B4_Ethanol}
+        \caption{IR trace for Ethanol}
+        \label{fig:B4_Ethanol}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[scale = 0.57]{../images/B4_Rubber}
+        \caption{IR trace for Rubber}
+        \label{fig:B4_Rubber}
+    \end{figure}
+    \item We have 6 such plots for each sample.
 \end{itemize}
 
 \subsection{Hahn Echo}\label{hahn-echo}
